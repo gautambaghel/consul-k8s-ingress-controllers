@@ -1,0 +1,34 @@
+# name your datacenter
+global: 
+  enabled: true
+  name: consul
+  datacenter: k8s
+  acls:
+    manageSystemACLs: true
+  metrics:
+    enabled: true
+    enableAgentMetrics: true
+
+prometheus:
+  enabled: true
+
+server:
+  enabled: true
+  replicas: 1
+
+client:
+  enabled: true
+
+connectInject:
+  enabled: true
+  transparentProxy:
+    defaultEnabled: true
+  logLevel: debug
+
+ui:
+  enabled: true
+  service:
+    type: LoadBalancer
+
+controller:
+  enabled: true
