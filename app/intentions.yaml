@@ -1,0 +1,18 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: ui
+spec:
+  destination:
+    name: web
+  sources:
+    - name: ui
+      permissions:
+        - action: allow
+          http:
+            pathExact: /
+            methods: ['GET']
+        - action: allow
+          http:
+            pathExact: /favicon.ico
+            methods: ['GET']
