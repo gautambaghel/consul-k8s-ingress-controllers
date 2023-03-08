@@ -47,6 +47,7 @@
     $ export CONSUL_HTTP_TOKEN=$(kubectl get -n consul secrets/consul-bootstrap-acl-token --template={{.data.token}} | base64 -d)
     $ export CONSUL_HTTP_ADDR=$(kubectl get svc -n consul consul-ui --output jsonpath='{.status.loadBalancer.ingress[0].ip}')
     $ export CONSUL_HTTP_SSL_VERIFY=false
+    $ consul members
     ```
 
 1. Apply intentions and proxy defaults to Consul on Kubernetes

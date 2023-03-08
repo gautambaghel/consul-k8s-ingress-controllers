@@ -1,0 +1,25 @@
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceDefaults
+metadata:
+  name: apigee
+spec:
+  protocol: http
+---
+apiVersion: consul.hashicorp.com/v1alpha1
+kind: ServiceIntentions
+metadata:
+  name: apigee
+spec:
+  destination:
+    name: ui
+  sources:
+    - name: apigee
+      permissions:
+        - action: allow
+          http:
+            pathExact: /
+            methods: ['GET']
+        - action: allow
+          http:
+            pathPrefix: /ui
+            methods: ['GET']
